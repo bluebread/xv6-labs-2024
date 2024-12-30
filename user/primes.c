@@ -9,6 +9,8 @@ void seize_prime(int ppl[2]) {
     int cpl[2];
     bool fork_child = false;
 
+    // Caution! Be careful to close the unused ends of the pipelines;
+    // otherwise, deadlock would occur. 
     close(ppl[1]);
     dup(ppl[0]);
 
@@ -18,6 +20,7 @@ void seize_prime(int ppl[2]) {
     
     printf("prime %d\n", prime);
 
+    // `read` system call returns 0 if and only if ALL write ends are closed.
     while (read(ppl[0], &n, sizeof(int)) != 0) {
         if (prime * prime >= n) {
             printf("prime %d\n", n);
