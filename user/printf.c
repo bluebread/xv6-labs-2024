@@ -133,6 +133,10 @@ void vprintf(int fd, const char *fmt, va_list ap)
         for (; *s; s++)
           putc(fd, *s);
       }
+      else if (c0 == 'c') {
+        char c = va_arg(ap, uint);
+        putc(fd, c);
+      }
       else if (c0 == '%')
       {
         putc(fd, '%');

@@ -19,8 +19,6 @@ int main(int argc, char *argv[])
         printf("%d: received ping\n", my_pid);
     }
     else {    
-        printf("child is %d\n", ch_pid);
-
         char ch = 'Y';
         int my_pid = getpid();
         int status;
