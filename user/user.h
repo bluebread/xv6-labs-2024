@@ -1,4 +1,8 @@
 struct stat;
+typedef signed char bool;
+#define true  1
+#define false 0
+#define NULL (void *)(0)
 
 // system calls
 int fork(void);
